@@ -1,122 +1,85 @@
-Intel Image Classification using Machine Learning
-Overview
+# Intel Image Classification using Deep Learning
 
-This project implements a classical machine learning pipeline to classify natural scene images from the Intel Image Classification Dataset. The goal is to compare the performance of a Decision Tree and a Random Forest classifier using handcrafted image features.
+## Project Overview
+This project focuses on **image classification** using the **Intel Image Classification Dataset**, which contains natural scene images belonging to six different categories. A **Convolutional Neural Network (CNN)** is used to automatically learn visual features and classify images into their respective scene types.
 
-The project is developed as part of Machine Learning – Classification (Question 2) and demonstrates the complete workflow from data loading to evaluation and analysis.
+The project demonstrates the complete deep learning workflow, including data preprocessing, model training, evaluation, and result visualization.
 
-Dataset
+---
 
-The dataset consists of images belonging to six scene categories:
+## Dataset Description
+The Intel Image Classification dataset consists of approximately **25,000 images** categorized into the following six classes:
 
-Buildings
+- **Buildings**
+- **Forest**
+- **Glacier**
+- **Mountain**
+- **Sea**
+- **Street**
 
-Forest
+The dataset is split into:
+- Training set
+- Validation set
+- Test set
 
-Glacier
+Each image is resized and normalized before being fed into the model.
 
-Mountain
+---
 
-Sea
+## Methodology
 
-Street
+### 1. Data Preprocessing
+- Image resizing
+- Normalization
+- Train-validation-test split
+- Data augmentation (where applicable)
 
-The data is organized into predefined folders:
+### 2. Model Architecture
+- Convolutional Neural Network (CNN)
+- Convolution + ReLU layers
+- Max Pooling layers
+- Fully connected dense layers
+- Softmax output layer for multi-class classification
 
-seg_train – Training images
+### 3. Model Training
+- Loss function: Categorical Cross-Entropy
+- Optimizer: Adam
+- Performance monitored using validation accuracy and loss
 
-seg_test – Testing images
+### 4. Model Evaluation
+The trained model is evaluated using:
+- Classification accuracy
+- Confusion matrix
+- Training vs validation loss and accuracy curves
 
-Each class is stored in a separate subfolder.
+---
 
-Methodology
-1. Data Preprocessing
+## Results & Observations
+- The CNN successfully learned discriminative features for scene classification
+- Certain classes such as *forest* and *sea* achieved higher accuracy due to distinct visual patterns
+- The model performance can be further improved using deeper architectures or transfer learning
 
-Images are loaded using OpenCV
+---
 
-Converted to grayscale
+## Tools & Technologies
+- Python
+- TensorFlow / Keras
+- NumPy
+- Matplotlib
+- OpenCV / PIL
+- Jupyter
 
-Resized to 64 × 64
-
-Flattened into 1D feature vectors
-
-2. Models Used
-
-Decision Tree Classifier (baseline model)
-
-Random Forest Classifier (ensemble model)
-
-3. Training and Evaluation
-
-Models are trained using the provided training set
-
-Evaluated on the test set
-
-Performance metrics include:
-
-Accuracy
-
-Confusion Matrix
-
-Classification Report (Precision, Recall, F1-score)
-
-4. Hyperparameter Experiment
-
-Random Forest performance is evaluated by varying the number of trees (n_estimators)
-
-Accuracy trends are visualized to study the effect of ensemble size
-
-Results and Discussion
-
-The Random Forest model consistently outperformed the Decision Tree classifier, demonstrating the advantage of ensemble learning over a single tree. Increasing the number of trees improved accuracy up to a certain point, after which the gains became marginal.
-
-A key limitation of this approach is the use of flattened grayscale images instead of deep learning–based feature extraction, which could further improve performance on image data.
-
-Project Structure
-intel-image-classification/
+- intel-image-classification/
 │
 ├── data/
-│   ├── seg_train/
-│   └── seg_test/
-│
-├── Intel Image-Code.ipynb
+│ ├── train/
+│ ├── validation/
+│ └── test/
+├── notebooks/
+│ └── Intel_Image_Classification.ipynb
+├── models/
+│ └── cnn_model.h5
 ├── README.md
 
-Environment and Requirements
 
-The project uses a single Python environment shared with other classification tasks.
-
-Required libraries:
-
-Python 3.10
-
-NumPy
-
-OpenCV
-
-scikit-learn
-
-Matplotlib
-
-Seaborn
-
-Jupyter Notebook
-
-Install dependencies:
-
-pip install numpy opencv-python scikit-learn matplotlib seaborn jupyter
-
-How to Run
-
-Clone the repository
-
-Open Intel Image-Code.ipynb
-
-Update dataset paths if required
-
-Run the notebook from top to bottom
-
-Author
-
-Mahvish Ayub
 
